@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<xs:schema
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ targetNamespace="http://www.uts.edu.au/31284/wsd-flights"
+ xmlns="http://www.uts.edu.au/31284/wsd-flishts"
+ elementFormDefault="qualified">
+    
+    <xs:simpleType name="id">
+        <xs:restriction base="xs:string">
+        </xs:restriction>
+    </xs:simpleType>
+        
+    <xs:simpleType name="depature">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d{1,2}/\d{1,2}/\d{1,4}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="return">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d{1,2}/\d{1,2}/\d{1,4}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="type">
+        <xs:restriction base="xs:string">
+        </xs:restriction>
+    </xs:simpleType>
+        
+    <xs:simpleType name="seats">
+        <xs:restriction base="xs:string">
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="origin">
+        <xs:restriction base="xs:string">
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="destination">
+        <xs:restriction base="xs:string">
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="price">
+        <xs:restriction base="xs:double">
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:element name="flight">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="id"/>
+                <xs:element name="departure" type="departure"/>
+                <xs:element name="return" type="return"/>
+                <xs:element name="price" type="price"/>
+                <xs:element name="origin" type="origin"/>
+                <xs:element name="destination" type="destination"/>
+                <xs:element name="type" type="type"/>
+                <xs:element name="seats" type="seats"/>
+            </xs:sequence>
+            <xs:attribute type="id" name="id" use="required" />
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

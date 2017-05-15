@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<flights xmlns="http://www.uts.edu.au/31284/wsd-flights"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.uts.edu.au/31284/wsd-articles flights.xsd">
+
+    <flight>
+        <id>AS170601001</id>
+        <departure>01-06-2017</departure>
+        <return>05-06-2017</return>
+        <price>$105.00</price>
+        <origin>Sydney</origin>
+        <destination>Melbourne</destination>
+        <type>Economic</type>
+        <seats>available</seats>
+    </flight>
+    <flight>
+        <id>AS170602001</id>
+        <departure>02-06-2017</departure>
+        <return>06-06-2017</return>
+        <price>$150.00</price>
+        <origin>Sydney</origin>
+        <destination>Brisbane</destination>
+        <type>Economic</type>
+        <seats>unavailable</seats> 
+    </flight>
+        <flight>
+        <id>AS170603001</id>
+        <departure>03-06-2017</departure>
+        <return>07-06-2017</return>
+        <price>$120.00</price>
+        <origin>Sydney</origin>
+        <destination>Perth</destination>
+        <type>Business</type>
+        <seats>available</seats> 
+    </flight>
+</flights>
