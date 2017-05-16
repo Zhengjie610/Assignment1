@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <customers>
-    <customer>        
-        <ID>1234</ID>    
+    <customer>         
         <email>admin@flight.com</email>
         <name>Admin</name>
-        <password>1234567</password>   
+        <password>1234567</password>
+        <birthday>05-06-2017</birthday>
     </customer>
-    <customer>       
-        <ID>5678</ID>  
+    <customer>          
         <email>joe@bloggs.com</email>
         <name>Joe Bloggs</name>
         <password>1234567</password>      
+        <birthday>11-11-2017</birthday>
     </customer>
 </customers>

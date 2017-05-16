@@ -1,22 +1,38 @@
+<%@ page language="java" import="uts.*" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1"%>
 <%-- 
     Document   : loginAction
     Created on : 12/05/2017, 9:07:50 PM
     Author     : 41815
 --%>
 
-<%@page import ="uts.*" contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <meta http-equiv="refresh" content="0;url=main.jsp ">
+       
         <title>Login</title>
         <link rel="stylesheet" type="text/css" href="style.css"/>
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
         <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
     </head>
+
     <body>
+        <% String filePath = application.getRealPath("WEB-INF/customers.xml");%>
+        <jsp:useBean id="customerApp" class="uts.CustomerApplication" scope="application">
+            <jsp:setProperty name="customerApp" property="filePath" value="<%=filePath%>"/>
+        </jsp:useBean>
+<%
+            String email = request.getParameter("email");
+            String password = request.getParameter("password");
+        %>
+        <%
+            Customers customes = customerApp.getCustomers();
+            Customer customer = customes.login(email, password);
+        %>
+
+
         <div class="header">
             <div class="container">
                 <div class="navbar menubar" id="menu">
@@ -77,14 +93,17 @@
             </div>
         </div>
 
+        
         <%
-            String email = request.getParameter("email");
-            String password = request.getParameter("password");
+            if (customer != null) {
+                session.setAttribute("customer", customer);
+                
         %>
-        <%
-            Customer customer = new Customer(email, password);
-            session.setAttribute("customer", customer);
-        %>
+         <div > <h4 style="text-align:center">You are logged in as <%= customer.getEmail()%> </h4></div>
+         <meta http-equiv="refresh" content="1;url=main.jsp ">
+        <%} else {%>
 
+         <div > <h4 style="text-align:center">Login Failed </h4></div>
+         <%}%>
     </body>
 </html>

@@ -24,12 +24,12 @@ public class Customers implements Serializable {
         return list;
     }
 
-    public void addStudent(Customer student) {
-        list.add(student);
+    public void addCustomers(Customer customer) {
+        list.add(customer);
     }
 
-    public void removeStudent(Customer student) {
-        list.remove(student);
+    public void removeCustomers(Customer customer) {
+        list.remove(customer);
     }
 
     public Customer getCustomer(String email) {
@@ -42,10 +42,10 @@ public class Customers implements Serializable {
     }
 
     public Customer login(String email, String password) {
-        // For each student in the list...
+        // For each Customers in the list...
         for (Customer customer : list) {
             if (customer.getEmail().equals(email)  & customer.getPassword().equals(password)) {
-                return customer; // Login correct. Return this student.
+                return customer; // Login correct. Return this Customers.
             }
         }
         return null; // Login incorrect. Return null.

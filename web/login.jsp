@@ -1,3 +1,4 @@
+<%@page import ="uts.*" contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -26,9 +27,9 @@
                                     <li><a href="register.jsp" class="page-scroll">Register</a></li>
                                     <li><a href="booking.jsp" class="page-scroll">Booking</a></li>
                                     <li><a href="login.jsp" class="page-scroll">Login</a></li>
-                                     <li><a href="logout.jsp" class="page-scroll">Log Out</a></li>
+                                    <li><a href="logout.jsp" class="page-scroll">Log Out</a></li>
                                     <li><a href="admin.jsp" class="page-scroll">Admin</a></li>
-        
+
                                 </ul>
                             </nav>
                         </div>
@@ -45,7 +46,7 @@
                                 <div class="schbox-title">
                                     <h2>Login</h2>
                                 </div>
-                                 
+
                                 <form class="appointform" method="post" action="loginAction.jsp">
                                     <div class=" col-xs-12">
                                         <div class="barfont1" >
@@ -62,7 +63,7 @@
                                         </div>
 
                                     </div>
-                                    
+
                                     <div class="col-md-12 col-sm-12 col-xs-12 text-center">
                                         <button type="submit" class="btn orange">Login</button>
                                     </div>
@@ -74,7 +75,17 @@
             </div>
         </div>
 
+        <%
+            Customer login = (Customer) session.getAttribute("customer"); //把从set地方拿过来用Get
+            //String log = login.getEmail();
+        %>  
 
+        <%    if (login == null) { %> 
+
+        <div > <h4 style="text-align:center">You are logged in as Viewer </h4></div>
+        <%} else {%>
+        <div > <h4 style="text-align:center">You are logged in as <%=login.getEmail()%> </h4></div>
+        <%}%>
 
     </body>
 </html>

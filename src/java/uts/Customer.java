@@ -12,8 +12,8 @@ import java.io.*;
 public class Customer implements Serializable {
 
     private String name;
-    private String password;
     private String email;
+    private String password;
     private String birthday;
 
     public Customer() {
