@@ -9,7 +9,7 @@
 <html>
     <head>
         
-        <meta http-equiv="refresh" content="0;url=main.jsp ">
+        <meta http-equiv="refresh" content="0;url=login.jsp ">
         <title>Logout</title>
     </head>
     <body>

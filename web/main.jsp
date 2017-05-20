@@ -1,3 +1,4 @@
+<%@page import="java.util.Date"%>
 <%@page import ="uts.*" contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -16,6 +17,27 @@
     </head>
 
     <body>
+         <% String filePath = application.getRealPath("WEB-INF/flights.xml");%>
+        <jsp:useBean id="flightApp" class="uts.FlightApplication" scope="application">
+            <jsp:setProperty name="flightApp" property="filePath" value="<%=filePath%>"/>
+        </jsp:useBean>
+        <%
+            String origin = request.getParameter("origin");
+            String destination = request.getParameter("destination");
+            String departure = request.getParameter("departure");
+            String returnd = request.getParameter("returnd");            
+        %>
+        <%
+            Flights flights = flightApp.getFlights();
+            session.setAttribute("flights", flights);
+        %>       
+        <jsp:useBean id="flightService" class="uts.FlightServiceImpl" scope="application">
+            <jsp:setProperty name="flightService" property="flights" value="<%=flights%>"/>
+        </jsp:useBean>        
+        <%
+            Flight flight = flightService.search(origin, destination, departure, returnd);
+        %> 
+        
         <div class="header">
             <div class="container">
                 <div class="navbar menubar" id="menu">
@@ -48,19 +70,19 @@
                                 <div class="schbox-title">
                                     <h2>Book Cheap Flights</h2>
                                 </div>
-                                <form role="form" class="appointform">
+                                <form class="appointform" method="post" action="main.jsp">
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <div class="barfont1" >
                                             <h5>Flying from</h5>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="name" placeholder="Enter a City"/>
+                                            <input type="text" class="form-control" id="origin" name="origin" placeholder="Enter a City"/>
                                         </div>
                                         <div class="barfont1" >
                                             <h5>Flying to</h5>
                                         </div>
                                         <div class="form-group">
-                                            <input type="email" class="form-control" id="email" placeholder="Enter a City"/>
+                                            <input type="text" class="form-control" id="destination" name="destination" placeholder="Enter a City"/>
                                         </div>
 
                                     </div>
@@ -69,13 +91,13 @@
                                             <h5>Departing</h5>
                                         </div>
                                         <div class="form-group">
-                                            <input type="date" class="form-control" id="date" placeholder="Date"/>
+                                            <input type="date" class="form-control" id="departure" name="departure" placeholder="Date"/>
                                         </div>
                                         <div class="barfont1" >
                                             <h5>Returning</h5>
                                         </div>
                                         <div class="form-group">
-                                            <input type="date" class="form-control" id="date" placeholder="Date"/>
+                                            <input type="date" class="form-control" id="returnd" name="returnd" placeholder="Date"/>
                                         </div>
 
                                     </div>
@@ -90,16 +112,19 @@
             </div>
         </div>
 
-        <%
-            Customer login = (Customer) session.getAttribute("customer"); //把从set地方拿过来用Get
-            //String log = login.getEmail();
-        %>  
-
-        <%    if (login == null) { %> 
-       
-        <div > <h4 style="text-align:center">You are logged in as Viewer </h4></div>
+        <%  if (flight == null) { %>        
+            <div > <h4 style="text-align:center">No available flight! </h4></div>        
         <%} else {%>
-        <div > <h4 style="text-align:center">You are logged in as <%=login.getEmail()%> </h4></div>
+            <%
+                String seats = flight.getSeats();
+            %>
+            <%  if(seats.equalsIgnoreCase("available")){
+                session.setAttribute("flight", flight);
+            %> 
+                <meta http-equiv="refresh" content="1;url=booking.jsp ">
+            <%} else {%>
+                <div > <h4 style="text-align:center">No available seats! </h4></div> 
+            <%}%>
         <%}%>
     </body>
 </html>

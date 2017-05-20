@@ -23,7 +23,7 @@
         <jsp:useBean id="customerApp" class="uts.CustomerApplication" scope="application">
             <jsp:setProperty name="customerApp" property="filePath" value="<%=filePath%>"/>
         </jsp:useBean>
-<%
+        <%
             String email = request.getParameter("email");
             String password = request.getParameter("password");
         %>

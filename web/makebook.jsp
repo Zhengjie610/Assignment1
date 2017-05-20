@@ -1,17 +1,32 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%-- 
+    Document   : makebook
+    Created on : 2017-5-20, 16:21:25
+    Author     : Administrator
+--%>
+
+<%@page import="uts.Flights"%>
+<%@page import="uts.Flight"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <title>Login</title>
-        <link rel="stylesheet" type="text/css" href="style.css"/>
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
-        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
-
-
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Make booking</title>
     </head>
-
     <body>
+        
+        <% String filePath = application.getRealPath("WEB-INF/flights.xml");%>
+        <jsp:useBean id="flightApp" class="uts.FlightApplication" scope="application">
+            <jsp:setProperty name="flightApp" property="filePath" value="<%=filePath%>"/>
+        </jsp:useBean>
+        <%
+            Flight flight = (Flight) session.getAttribute("flight");
+            flight.setSeats("unavailable");
+            Flights flights = (Flights) session.getAttribute("flights");
+            flightApp.updateXML(flights, filePath);
+        %>
+        <h1>Make booking!</h1>
+        
         <div class="header">
             <div class="container">
                 <div class="navbar menubar" id="menu">
@@ -34,20 +49,7 @@
                 </div>
             </div>
         </div>
-        <div class="banner">
-            <div class="container">
-                <div class="row">
-                                   
-     <input type="button" class="btn orange" name="makebook" value="Make a booking" onclick="window.location='makebook.jsp'" />
-     <div style="height:20px;"></div>
-     <input type="button" class="btn orange" name="viewbook" value="View booking" onclick="window.location='viewbook.jsp'"/>
-     <div style="height:20px;"></div>
-     <input type="button" class="btn orange" name="editbook" value="Edit booking" onclick="window.location='editbook.jsp'"/>
-     <div style="height:20px;"></div>
-     <input type="button" class="btn orange" name="cancelbook" value="Cancel a booking" onclick="window.location='cancelbook.jsp'" />
-                    
-                </div>
-            </div>
-        </div>
+        
+        <p>Booking successfully!</p>
     </body>
 </html>
