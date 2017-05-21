@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="uts.Flights"%>
-<%@page import="uts.Flight"%>
+<%@page import="uts.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -38,6 +38,10 @@
                 flightApp.updateXML(flights, filePath);
             }
         %>
+        <%
+            Customer login = (Customer) session.getAttribute("customer"); //把从set地方拿过来用Get
+            //String log = login.getEmail();
+        %> 
  <%--        
         <%= flag%>
         <%if( (flag != null) && flag.equals("1")){%>
@@ -57,7 +61,11 @@
                                     <li><a href="main.jsp" class="page-scroll active">Home</a></li>
                                     <li><a href="register.jsp" class="page-scroll">Register</a></li>
                                     <li><a href="booking.jsp" class="page-scroll">Booking</a></li>
+                                     <%    if (login != null) { %> 
+                                    <li><a href="logout.jsp" class="page-scroll">Log Out</a></li>
+                                        <%} else {%>
                                     <li><a href="login.jsp" class="page-scroll">Login</a></li>
+                                        <%}%>
                                     <li><a href="admin.jsp" class="page-scroll">Admin</a></li>
                                 </ul>
                             </nav>
@@ -77,19 +85,19 @@
                                     <div class="schbox-title">
                                         <h2>Booking Flight Info</h2>
                                     </div>
-
+                                    <%    if (login != null) { %> 
                                     <form class="appointform" method="post" action="booking.jsp?flag=1">
                                         <table border="0" style="width:600px;text-align:left;">                
-                                            <thead><tr><th style="width:150px;">Item</th><th style="width:250px;">Value</th></tr></thead>
+                                            <thead><tr><th style="width:150px;">Item</th><th style="width:320px;">Value</th></tr></thead>
                                             <tbody>
-                                                <tr><td>id: </td><td>${flight.id}</td></tr>
-                                                <tr><td>departure: </td><td>${flight.departure}</td></tr>
-                                                <tr><td>returnd: </td><td>${flight.returnd}</td></tr>
-                                                <tr><td>price: </td><td>${flight.price}</td></tr>
-                                                <tr><td>origin: </td><td>${flight.origin}</td></tr>
-                                                <tr><td>destination: </td><td>${flight.destination}</td></tr>
-                                                <tr><td>type: </td><td>${flight.type}</td></tr>
-                                                <tr><td>seats: </td><td>${flight.seats}</td></tr>
+                                                <tr><td>ID: </td><td>${flight.id}</td></tr>
+                                                <tr><td>Departure: </td><td>${flight.departure}</td></tr>
+                                                <tr><td>Return: </td><td>${flight.returnd}</td></tr>
+                                                <tr><td>Price: </td><td>${flight.price}</td></tr>
+                                                <tr><td>Origin: </td><td>${flight.origin}</td></tr>
+                                                <tr><td>Destination: </td><td>${flight.destination}</td></tr>
+                                                <tr><td>Type: </td><td>${flight.type}</td></tr>
+                                                <tr><td>Seats: </td><td>${flight.seats}</td></tr>
                                             </tbody>
                                         </table>
                                         <div class="col-md-12 col-sm-12 col-xs-12 text-center">
@@ -97,10 +105,15 @@
                                             <!--<input type="button" class="btn orange" name="makebook" value="Make Booking" onclick="makebooking();" />-->
                                         </div>
                                         <%if( (flag != null) && flag.equals("1")){%>
-                                            <div>Booking successfully!</div>
+                                            <div>Booking Successfully!</div>
                                         <%}%>
                                         <!--<div id = "bknrst">Booking ready!</dir>-->
                                     </form>
+                                         <%} else {%>
+                                         
+                                          <div > <h4 style="text-align:center" clolar="white">You are logged in as Viewer! </h4></div>
+                                          <div > <h4 style="text-align:center" clolar="white">No Booking Available </h4></div>
+                                        <%}%>
                                 </div>
                             </div>
                         </div>
@@ -125,5 +138,16 @@
         }
 
     </script> 
+    
+    
+     
+ <%    if (login == null) { %> 
+
+        <div > <h4 style="text-align:center">You are logged in as Viewer </h4></div>
+        <%} else {%>
+        <div > <h4 style="text-align:center">You are logged in as <%=login.getEmail()%> </h4></div>
+        <%}%>
+    
+    
     </body>
 </html>

@@ -8,7 +8,10 @@
         <link rel="stylesheet" type="text/css" href="style.css"/>
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
         <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
-
+<%
+            Customer login = (Customer) session.getAttribute("customer"); //把从set地方拿过来用Get
+         
+        %> 
 
     </head>
 
@@ -26,8 +29,11 @@
                                     <li><a href="main.jsp" class="page-scroll active">Home</a></li>
                                     <li><a href="register.jsp" class="page-scroll">Register</a></li>
                                     <li><a href="booking.jsp" class="page-scroll">Booking</a></li>
-                                    <li><a href="login.jsp" class="page-scroll">Login</a></li>
+                                         <%    if (login != null) { %> 
                                     <li><a href="logout.jsp" class="page-scroll">Log Out</a></li>
+                                        <%} else {%>
+                                    <li><a href="login.jsp" class="page-scroll">Login</a></li>
+                                        <%}%>
                                     <li><a href="admin.jsp" class="page-scroll">Admin</a></li>
 
                                 </ul>
@@ -92,10 +98,7 @@
             </div>
         </div>
 
-        <%
-            Customer login = (Customer) session.getAttribute("customer"); //把从set地方拿过来用Get
-            //String log = login.getEmail();
-        %>  
+         
 
         <%    if (login == null) { %> 
 

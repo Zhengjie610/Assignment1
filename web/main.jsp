@@ -17,7 +17,7 @@
     </head>
 
     <body>
-         <% String filePath = application.getRealPath("WEB-INF/flights.xml");%>
+        <% String filePath = application.getRealPath("WEB-INF/flights.xml");%>
         <jsp:useBean id="flightApp" class="uts.FlightApplication" scope="application">
             <jsp:setProperty name="flightApp" property="filePath" value="<%=filePath%>"/>
         </jsp:useBean>
@@ -25,11 +25,12 @@
             String origin = request.getParameter("origin");
             String destination = request.getParameter("destination");
             String departure = request.getParameter("departure");
-            String returnd = request.getParameter("returnd");            
+            String returnd = request.getParameter("returnd");
         %>
         <%
             Flights flights = flightApp.getFlights();
             session.setAttribute("flights", flights);
+            Customer login = (Customer) session.getAttribute("customer");
         %>       
         <jsp:useBean id="flightService" class="uts.FlightServiceImpl" scope="application">
             <jsp:setProperty name="flightService" property="flights" value="<%=flights%>"/>
@@ -37,7 +38,7 @@
         <%
             Flight flight = flightService.search(origin, destination, departure, returnd);
         %> 
-        
+
         <div class="header">
             <div class="container">
                 <div class="navbar menubar" id="menu">
@@ -51,8 +52,12 @@
                                     <li><a href="main.jsp" class="page-scroll active">Home</a></li>
                                     <li><a href="register.jsp" class="page-scroll">Register</a></li>
                                     <li><a href="booking.jsp" class="page-scroll">Booking</a></li>
-                                    <li><a href="login.jsp" class="page-scroll">Login</a></li>
+
+                                    <%    if (login != null) { %> 
                                     <li><a href="logout.jsp" class="page-scroll">Log Out</a></li>
+                                        <%} else {%>
+                                    <li><a href="login.jsp" class="page-scroll">Login</a></li>
+                                        <%}%>
                                     <li><a href="admin.jsp" class="page-scroll">Admin</a></li>
                                 </ul>
                             </nav>
@@ -113,18 +118,27 @@
         </div>
 
         <%  if (flight == null) { %>        
-            <div > <h4 style="text-align:center">No available flight! </h4></div>        
+        <div > <h4 style="text-align:center">No available flight! </h4></div>        
         <%} else {%>
-            <%
-                String seats = flight.getSeats();
-            %>
-            <%  if(seats.equalsIgnoreCase("available")){
+        <%
+            String seats = flight.getSeats();
+        %>
+        <%  if (seats.equalsIgnoreCase("available")) {
                 session.setAttribute("flight", flight);
-            %> 
-                <meta http-equiv="refresh" content="1;url=results.jsp ">
+        %> 
+        <meta http-equiv="refresh" content="1;url=results.jsp ">
             <%} else {%>
-                <div > <h4 style="text-align:center">No available seats! </h4></div> 
+            <div > <h4 style="text-align:center">No available seats! </h4></div> 
+
             <%}%>
-        <%}%>
+
+            <%}%>
+            <%    if (login == null) { %> 
+
+            <div > <h4 style="text-align:center">You are logged in as Viewer </h4></div>
+            <%} else {%>
+            <div > <h4 style="text-align:center">You are logged in as <%=login.getEmail()%> </h4></div>
+            <%}%>
+
     </body>
 </html>

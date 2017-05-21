@@ -23,7 +23,7 @@ and open the template in the editor.
         <origin>Sydney</origin>
         <destination>Brisbane</destination>
         <type>Economic</type>
-        <seats>unavailable</seats> 
+        <seats>available</seats> 
     </flight>
         <flight>
         <id>AS170603001</id>
@@ -53,7 +53,7 @@ and open the template in the editor.
         <origin>Fire</origin>
         <destination>London</destination>
         <type>Economic</type>
-        <seats>unavailable</seats> 
+        <seats>available</seats> 
     </flight>
         <flight>
         <id>AS170603002</id>

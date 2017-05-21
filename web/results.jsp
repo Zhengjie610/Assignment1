@@ -1,4 +1,4 @@
-<%@page import="uts.Flight"%>
+<%@ page import="uts.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -18,6 +18,7 @@
     <body>
         <%
             Flight flight = (Flight) session.getAttribute("flight");
+             Customer login = (Customer) session.getAttribute("customer");
         %>
         <div class="header">
             <div class="container">
@@ -49,14 +50,14 @@
                     <h3>Available Flight: </h3>
                     <table id="tab" border="2">
                         <tr style="width:1050px;height:30px;">
-                            <th style="width:150px;">id</th>
-                            <th style="width:150px;">departure</th>
-                            <th style="width:150px;">returnd</th>
-                            <th style="width:100px;">price</th>
-                            <th style="width:100px;">origin</th>
-                            <th style="width:100px;">destination</th> 
-                            <th style="width:100px;">type</th>
-                            <th style="width:100px;">seats</th>
+                            <th style="width:150px;">ID</th>
+                            <th style="width:150px;">Departure</th>
+                            <th style="width:150px;">Returnd</th>
+                            <th style="width:100px;">Price</th>
+                            <th style="width:100px;">Origin</th>
+                            <th style="width:100px;">Destination</th> 
+                            <th style="width:100px;">Type</th>
+                            <th style="width:100px;">Seats</th>
                             <th style="width:100px;"></th>
                         </tr>
                         <tr>
@@ -68,12 +69,24 @@
                             <td>${flight.destination}</td> 
                             <td>${flight.type}</td>
                             <td>${flight.seats}</td>
-                            <td><input type="button" class="btn orange" name="makebook" value="booking" onclick="window.location='booking.jsp'" /></td>
+                            <%    if (login == null) { %> 
+                            <td><input type="button" class="btn orange" name="makebook" value="Booking Not Available"  /></td>
+                            <%} else {%>
+                            <td><input type="button" class="btn orange" name="makebook" value="Booking" onclick="window.location='booking.jsp'" /></td>
+                            <%}%>
+ 
+                            
                         </tr>
                     </table>                  
-
-                </div>
+         
             </div>
+            </div>              
         </div>
+                 <%    if (login == null) { %> 
+
+        <div > <h4 style="text-align:center">You are logged in as Viewer </h4></div>
+        <%} else {%>
+        <div > <h4 style="text-align:center">You are logged in as <%=login.getEmail()%> </h4></div>
+        <%}%>          
     </body>
 </html>
