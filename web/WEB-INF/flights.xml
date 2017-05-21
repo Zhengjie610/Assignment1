@@ -35,4 +35,34 @@ and open the template in the editor.
         <type>Business</type>
         <seats>available</seats> 
     </flight>
+    <flight>
+        <id>AS170601002</id>
+        <departure>03-06-2017</departure>
+        <returnd>06-06-2017</returnd>
+        <price>$108.00</price>
+        <origin>Achor</origin>
+        <destination>Malong</destination>
+        <type>Economic</type>
+        <seats>available</seats>
+    </flight>
+    <flight>
+        <id>AS170602002</id>
+        <departure>12-06-2017</departure>
+        <returnd>16-06-2017</returnd>
+        <price>$200.00</price>
+        <origin>Fire</origin>
+        <destination>London</destination>
+        <type>Economic</type>
+        <seats>unavailable</seats> 
+    </flight>
+        <flight>
+        <id>AS170603002</id>
+        <departure>03-07-2017</departure>
+        <returnd>04-07-2017</returnd>
+        <price>$230.00</price>
+        <origin>Makao</origin>
+        <destination>Duolonduo</destination>
+        <type>Business</type>
+        <seats>available</seats> 
+    </flight>    
 </flights>

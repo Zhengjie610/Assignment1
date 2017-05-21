@@ -1,103 +1,108 @@
-<%-- 
-    Document   : register
-    Created on : May 7, 2017, 1:00:48 AM
-    Author     : ongky
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
+<%@page import ="uts.*" contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title>Register</title>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+
+
     </head>
-    <style>
-div.container {
-    width: 100%;
-    border: 1px;
-}
 
-footer {
-    padding: 1em;
-    color: black;
-    clear: left;
-    text-align: center;
-}
+    <body>
+        <div class="header">
+            <div class="container">
+                <div class="navbar menubar" id="menu">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle menu-button" data-toggle="collapse" data-target="#myNavbar"> <span class="glyphicon glyphicon-align-justify set"></span> </button>
+                            <a class="navbar-brand logo" href="#">TicketonGo.com</a> </div>
+                        <div class="navdiv">
+                            <nav class="collapse navbar-collapse navset" id="myNavbar" role="navigation">
+                                <ul class="nav navbar-nav navbar-right navstyle navb">
+                                    <li><a href="main.jsp" class="page-scroll active">Home</a></li>
+                                    <li><a href="register.jsp" class="page-scroll">Register</a></li>
+                                    <li><a href="booking.jsp" class="page-scroll">Booking</a></li>
+                                    <li><a href="login.jsp" class="page-scroll">Login</a></li>
+                                    <li><a href="logout.jsp" class="page-scroll">Log Out</a></li>
+                                    <li><a href="admin.jsp" class="page-scroll">Admin</a></li>
 
-nav {
-    float: left;
-    max-width: 450px;
-    margin: 0;
-    padding: 1em;
-}
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                        <div class="schbox">
+                            <div class="col-md-6 col-sm-12 col-xs-12 appointment"   >
+                                <div class="schbox-title">
+                                    <h2>Register</h2>
+                                </div>
 
-nav ul {
-    list-style-type: none;
-    padding: 0;
-}
+                                <form class="appointform" method="post" action="loginAction.jsp">
+                                    <div class=" col-xs-12">
+                                        <div class="barfont1" >
+                                            <h5>Email Address</h5>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="email" placeholder="Enter a Email"/>
+                                        </div>
+                                        <div class="barfont1" >
+                                            <h5>Password</h5>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" name="password" placeholder="Enter a Password"/>
+                                        </div>
+                                        <div class="barfont1" >
 
-article {
-    margin-left: 500px;
-    border-left: 1px;
-    padding: 2em;
-    overflow: hidden;
-}
-</style>
-    <body background="">
-        <div id="bodycontent">
-		<form method="POST" action="results.jsp">
-				<fieldset>
-						<legend>TicketonGo.com</legend>
-                                                
-                                                
-                                                
-                                                <div class="container">
-                                                
-<nav>
-  <ul>
-      <table>
-                                                    <h4>Join Us as TicketonGo Member!</h4>
-                                                    <tr>
-                                                        <td>Full Name</td>
-                                                        <td><input type="text" name="name" /></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Email</td>
-                                                        <td><input type="text" name="email" /></td>
-                                                    </tr>
-                                                    <tr>  
-                                                        <td>Password</td>
-                                                        <td><input type="password" name="password" /></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Date of Birth</td>
-                                                        <td><input type="date" name="dob" /></td>
-                                                    </tr>
-                                                    
-                                                    <tr>
-                                                     <td></td>    <td><input type="Submit" value="Join" /></td>
-                                                    </tr>
-                                                    </table>
-  </ul>
-</nav>
+                                            <h5>Full Name</h5>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="Full Name" placeholder="Enter a Full Name"/>
+                                        </div>
 
-<article>
-  <h4>Quick Booking with Only One Click </h4>
-  <img src="icon-touch.png" alt="fast click" style="width:60px;height:50px;">
-  <p>As a member of TicketonGo, your booking is our priority.</p>
-  
-</article>
+                                        <div class="barfont1" >
+
+                                            <h5>Date of Birth</h5>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="date" name="dob" class="form-control"/>
+                                        </div>
 
 
 
-<i align="left" style="margin-left: 25px;">Already registered?  <a href="login.jsp"><u>Login</u></a></i>
+                                    </div>
 
-</div>
+                                    <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                                        <button type="submit" class="btn orange">Register</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                                                </fieldset>
-       
-		</form>
-</div>
-<footer>&copy; 2017 TicketonGo.com</footer>        
-</body>
+        <%
+            Customer login = (Customer) session.getAttribute("customer"); //把从set地方拿过来用Get
+            //String log = login.getEmail();
+        %>  
+
+        <%    if (login == null) { %> 
+
+        <div > <h4 style="text-align:center">You are logged in as Viewer </h4></div>
+        <%} else {%>
+        <div > <h4 style="text-align:center">You are logged in as <%=login.getEmail()%> </h4></div>
+        <%}%>
+
+    </body>
 </html>

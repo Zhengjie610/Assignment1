@@ -34,12 +34,22 @@ public class FlightServiceImpl implements FlightService {
             @WebParam(name = "departure",targetNamespace="http://www.uts.edu.au/31284/wsd-flights")String departure, 
             @WebParam(name = "returnd",targetNamespace="http://www.uts.edu.au/31284/wsd-flights")String returnd) {
         // For each Flights in the list...
+/*        
         if(origin==null||destination==null||departure==null||returnd==null)return null;
         if(origin.isEmpty()||destination.isEmpty()||departure.isEmpty()||returnd.isEmpty())return null;
+*/        
+        if(origin==null||destination==null)return null;
+        if(origin.isEmpty()||destination.isEmpty())return null;
         if(flights == null)return null;
+        
         for (Flight flight : flights.getList()) {
+/*            
             if ((flight.getOrigin().equals(origin))  && (flight.getDestination().equals(destination)) && 
                     (Flights.compare_date(flight.getDeparture(), departure)==0) && (Flights.compare_date(flight.getReturnd(), returnd)==0)) {
+                return flight; // available flight
+            }
+*/
+            if ((flight.getOrigin().equals(origin))  && (flight.getDestination().equals(destination)) ) {
                 return flight; // available flight
             }
         }

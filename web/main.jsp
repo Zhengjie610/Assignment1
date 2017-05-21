@@ -121,7 +121,7 @@
             <%  if(seats.equalsIgnoreCase("available")){
                 session.setAttribute("flight", flight);
             %> 
-                <meta http-equiv="refresh" content="1;url=booking.jsp ">
+                <meta http-equiv="refresh" content="1;url=results.jsp ">
             <%} else {%>
                 <div > <h4 style="text-align:center">No available seats! </h4></div> 
             <%}%>

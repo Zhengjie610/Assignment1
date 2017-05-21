@@ -4,6 +4,10 @@ body {
 a {
     outline: none !important;
 }
+td {  
+    text-align:center;  
+}
+
 .header {
     background-color: #fff;
 }
