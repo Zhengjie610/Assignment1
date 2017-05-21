@@ -47,7 +47,7 @@
             <div class="container">
                 <div class="row center-block">
 
-                    <h3>Available Flight: </h3>
+                    <h3><font color="white">Available Flight:  </font></h3>
                     <table id="tab" border="2">
                         <tr style="width:1050px;height:30px;">
                             <th style="width:150px;">ID</th>
